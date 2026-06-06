@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Card,
   CardHeader,
@@ -9,8 +9,13 @@ import GraficoDespesas from "../components/GraficoDespesas";
 import AcoesRapidas from "../components/AcoesRapidas";
 import UltimasTransacoes from "../components/UltimasTransacoes";
 import MetasFinanceiras from "../components/MetasFinanceiras";
+import ModalReceita from "../components/ModalReceita";
+import ModalDespesa from "../components/ModalDespesa";
 
 export default function Dashboard() {
+  const [showReceita, setShowReceita] = useState(false);
+  const [showDespesa, setShowDespesa] = useState(false);
+
   return (
     <div className="container-fluid py-4">
       {/* Linha dos Cards de Resumo */}
@@ -75,7 +80,10 @@ export default function Dashboard() {
           <GraficoDespesas />
         </div>
         <div className="col-md-4">
-          <AcoesRapidas />
+          <AcoesRapidas 
+            abrirReceita={() => setShowReceita(true)}
+            abrirDespesa={() => setShowDespesa(true)}
+          />
         </div>
       </div>
 
@@ -88,6 +96,17 @@ export default function Dashboard() {
           <MetasFinanceiras />
         </div>
       </div>
+      {/* Modais */}
+
+      <ModalReceita
+        show={showReceita}
+        handleClose={() => setShowReceita(false)}
+      />
+
+      <ModalDespesa
+        show={showDespesa}
+        handleClose={() => setShowDespesa(false)}
+      />
     </div>
   );
 }
