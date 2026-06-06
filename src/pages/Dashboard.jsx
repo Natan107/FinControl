@@ -4,9 +4,11 @@ import {
   CardHeader,
   CardTitle,
   CardContent,
-} from "../components/CardResumo"; // Confirme se o caminho da importação está correto no seu projeto
+} from "../components/CardResumo";
 import GraficoDespesas from "../components/GraficoDespesas";
 import AcoesRapidas from "../components/AcoesRapidas";
+import UltimasTransacoes from "../components/UltimasTransacoes";
+import MetasFinanceiras from "../components/MetasFinanceiras";
 
 export default function Dashboard() {
   return (
@@ -75,6 +77,11 @@ export default function Dashboard() {
         </div>
         <div className="col-md-4">
           <AcoesRapidas />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-12">
+          <MetasFinanceiras />
         </div>
       </div>
     </div>
