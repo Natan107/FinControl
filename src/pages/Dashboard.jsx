@@ -69,9 +69,8 @@ export default function Dashboard() {
           </Card>
         </div>
       </div>
-
-      {/* Gráficos e Ações Rápidas virão aqui */}
-      <div className="row">
+      {/* Linha 2: Gráfico e Ações Rápidas */}
+      <div className="row g-4 mb-4">
         <div className="col-md-8">
           <GraficoDespesas />
         </div>
@@ -79,8 +78,13 @@ export default function Dashboard() {
           <AcoesRapidas />
         </div>
       </div>
-      <div className="row">
-        <div className="col-md-12">
+
+      {/* Linha 3: Últimas Transações e Metas Financeiras */}
+      <div className="row g-4">
+        <div className="col-md-8">
+          <UltimasTransacoes />
+        </div>
+        <div className="col-md-4">
           <MetasFinanceiras />
         </div>
       </div>
