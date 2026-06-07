@@ -3,6 +3,7 @@ import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Dashboard from "../pages/Dashboard";
 import Despesas from "../pages/Despesas";
+import Metas from "../pages/Metas";
 
 export default function AppRoutes() {
     return (
@@ -30,6 +31,7 @@ export default function AppRoutes() {
                     <Routes>
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/despesas" element={<Despesas />} />
+                        <Route path="/metas" element={<Metas />} />
                         <Route path="*" element={<h1>Página não desenvolvida</h1>} />
                     </Routes>
                 </div>
