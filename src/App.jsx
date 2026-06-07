@@ -6,27 +6,25 @@ import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
 
 export default function App() {
-  // Mantemos o cálculo para garantir o espaçamento correto
-  const sidebarWidth = "260px";
+  // width of a Bootstrap col-md-2 is 16.6667% — used to offset the fixed sidebar
+  const sidebarWidth = "16.666667%";
 
   return (
-    <div className="container-fluid p-0">
-      <div className="d-flex">
-        {/* Sidebar fixa na esquerda */}
-        <div
-          style={{ width: sidebarWidth, position: "fixed", height: "100vh" }}
-        >
-          <Sidebar />
-        </div>
-
-        {/* Conteúdo principal empurrado para a direita pela largura da sidebar */}
+    <div className="container-fluid min-vh-100 p-0">
+      <div className="row m-0">
+        <Sidebar />
         <main
-          className="flex-grow-1 bg-light"
-          style={{ marginLeft: sidebarWidth, minHeight: "100vh" }}
+          className="bg-light"
+          style={{
+            marginLeft: "260px", // A largura exata da sua sidebar
+            width: "calc(100vw - 260px)", // Força a largura a ser o que sobra da tela
+            minHeight: "100vh",
+            overflowX: "hidden", // Esconde qualquer coisa que passe do limite
+          }}
         >
           <Header title="Dashboard" subtitle="Resumo da sua vida financeira" />
 
-          <div className="p-4">
+          <div className="container-fluid p-4">
             <Dashboard />
           </div>
         </main>

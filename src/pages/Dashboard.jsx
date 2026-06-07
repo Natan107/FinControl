@@ -6,12 +6,15 @@ import MetasFinanceiras from "../components/MetasFinanceiras";
 
 export default function Dashboard() {
   return (
-    <div className="p-4" style={{ fontFamily: "Inter, sans-serif" }}>
+    <div
+      className="container-fluid px-5 pb-5"
+      style={{ fontFamily: "Inter, sans-serif" }}
+    >
       {/* =========================================
           1. CARDS DE RESUMO (Saldo, Receitas, Despesas)
           O "g-4" dá um espaçamento perfeito entre os 3 cartões
       ============================================= */}
-      <div className="row g-4 mb-4">
+      <div className="row g-4 mb-4 mx-0">
         {/* Card 1: Saldo Atual (Verde) */}
         <div className="col-md-4">
           <div
@@ -84,7 +87,7 @@ export default function Dashboard() {
       ============================================= */}
 
       {/* Linha 2: Gráficos e Ações Rápidas */}
-      <div className="row g-4 mb-4">
+      <div className="row g-4 mb-4 mx-0">
         <div className="col-md-8">
           <div className="card border-0 shadow-sm rounded-4 p-4 h-100">
             <GraficoDespesas />
@@ -99,7 +102,7 @@ export default function Dashboard() {
       </div>
 
       {/* Linha 3: Últimas Transações e Metas Financeiras */}
-      <div className="row g-4">
+      <div className="row g-4 mx-0">
         <div className="col-md-8">
           <div className="card border-0 shadow-sm rounded-4 p-4 h-100">
             <UltimasTransacoes />
