@@ -1,9 +1,8 @@
-import React from 'react';
+import React from "react";
 
 export default function Header() {
   return (
-    <div className="d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
-      
+    <div className="d-flex justify-content-between align-items-center pt-2 pb-4 mb-4 border-bottom">
       {/* Lado Esquerdo: Títulos */}
       <div>
         <h2 className="m-0 fw-bold">Dashboard</h2>
@@ -12,22 +11,33 @@ export default function Header() {
 
       {/* Lado Direito: Notificação e Perfil */}
       <div className="d-flex align-items-center gap-4">
-        
         {/* Ícone de Sino (Bootstrap Icons) */}
-        <div className="position-relative" style={{ cursor: 'pointer' }}>
+        <button
+          type="button"
+          className="header-action-button position-relative header-action-lift"
+          onClick={() => console.log("Notificações clicadas")}
+          aria-label="Notificações"
+        >
           <i className="bi bi-bell fs-4"></i>
           {/* Bolinha vermelha de notificação */}
           <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
-        </div>
+        </button>
 
         {/* Perfil Simplificado (Sem precisar do componente Avatar.jsx ainda) */}
-        <div className="d-flex align-items-center gap-2" style={{ cursor: 'pointer' }}>
-          <div className="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center" style={{ width: '40px', height: '40px' }}>
+        <button
+          type="button"
+          className="header-action-button d-flex align-items-center gap-2 header-action-lift"
+          onClick={() => console.log("Perfil clicado")}
+          aria-label="Perfil"
+        >
+          <div
+            className="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center"
+            style={{ width: "40px", height: "40px" }}
+          >
             <i className="bi bi-person fs-5"></i>
           </div>
           <span className="fw-medium">Olá, Lucas!</span>
-        </div>
-
+        </button>
       </div>
     </div>
   );

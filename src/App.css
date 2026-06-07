@@ -118,6 +118,33 @@ body,
     transform 0.15s ease;
 }
 
+.header-action-button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  padding: 0.4rem;
+  border-radius: 0.75rem;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.header-action-button:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.header-action-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.header-action-lift {
+  position: relative;
+  top: -2px;
+}
+
 .sidebar-menu-button:hover {
   background-color: rgba(255, 255, 255, 0.08);
   color: #ffffff !important;
