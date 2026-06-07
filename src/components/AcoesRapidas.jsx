@@ -19,7 +19,7 @@ export default function AcoesRapidas() {
 
       {/* 1. Botão Adicionar Receita (Verde) */}
       <div
-        className="card border rounded-3 p-3 mb-3 shadow-sm-hover"
+        className="card border rounded-3 p-3 mb-3 shadow-sm-hover quick-action-card"
         style={{ cursor: "pointer" }}
         onClick={handleOpenModalReceita}
       >
@@ -42,7 +42,7 @@ export default function AcoesRapidas() {
 
       {/* 2. Botão Adicionar Despesa (Vermelho) */}
       <div
-        className="card border rounded-3 p-3 mb-3"
+        className="card border rounded-3 p-3 mb-3 quick-action-card"
         style={{ cursor: "pointer" }}
         onClick={handleOpenModalDespesa}
       >
@@ -64,7 +64,10 @@ export default function AcoesRapidas() {
       </div>
 
       {/* 3. Botão Ver Relatórios (Azul) */}
-      <div className="card border rounded-3 p-3" style={{ cursor: "pointer" }}>
+      <div
+        className="card border rounded-3 p-3 quick-action-card"
+        style={{ cursor: "pointer" }}
+      >
         <div className="d-flex align-items-center gap-3">
           {/* Caixa do Ícone Azul */}
           <div

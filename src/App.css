@@ -91,6 +91,25 @@ body,
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
+.quick-action-card {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.quick-action-card:hover {
+  background-color: rgba(13, 110, 253, 0.08);
+  transform: translateX(4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.quick-action-card:hover .bg-success,
+.quick-action-card:hover .bg-danger,
+.quick-action-card:hover .bg-info {
+  opacity: 1;
+}
+
 /* Responsive Font Sizes */
 .sidebar-menu-button {
   transition:
