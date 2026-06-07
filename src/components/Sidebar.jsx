@@ -1,4 +1,5 @@
 import React from "react";
+import Gerencie from "../assets/Gerencie.png";
 
 export default function Sidebar() {
   // Troquei os componentes do Lucide pelos nomes das classes do Bootstrap Icons
@@ -8,27 +9,26 @@ export default function Sidebar() {
     { label: "Despesas", icon: "bi-graph-down-arrow" },
     { label: "Metas Financeiras", icon: "bi-bullseye" },
     { label: "Relatórios", icon: "bi-file-earmark-text" },
-    { label: "Configurações", icon: "bi-gear" },
   ];
 
   return (
-    <aside 
+    <aside
       className="bg-dark text-white p-0 vh-100"
       style={{
         position: "fixed",
         left: 0,
         top: 0,
         width: "260px",
-        zIndex: 1000
+        zIndex: 1000,
       }}
     >
       <div className="d-flex flex-column h-100">
         <div className="p-3 border-bottom border-secondary">
-          <h4 className="mb-0 text-success fw-bold">
-            <i className="bi bi-bar-chart-fill me-2"></i>
-            FinControl
-          </h4>
-          <small className="text-muted">Gestão Financeira Pessoal</small>
+          <img
+            src={Gerencie}
+            alt="FinControl"
+            style={{ width: "100%", height: "auto" }}
+          />
         </div>
 
         <nav className="flex-grow-1 overflow-auto mt-3">
@@ -57,13 +57,6 @@ export default function Sidebar() {
           <small className="text-white">
             Organize suas finanças e conquiste seus objetivos!
           </small>
-        </div>
-
-        <div className="p-3 border-top border-secondary">
-          <button className="btn btn-link text-white-50 text-decoration-none d-flex align-items-center gap-2 w-100">
-            <i className="bi bi-box-arrow-right fs-5"></i>
-            <span>Sair</span>
-          </button>
         </div>
       </div>
     </aside>
