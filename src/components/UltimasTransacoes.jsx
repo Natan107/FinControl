@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardHeader, CardTitle, CardContent } from "./CardResumo";
 
 export default function UltimasTransacoes() {
+  // Array com os dados exatos do seu print para gerar a tabela automaticamente
   const transacoes = [
     {
       id: 1,
@@ -9,7 +9,7 @@ export default function UltimasTransacoes() {
       descricao: "Salário",
       categoria: "Salário",
       tipo: "receita",
-      valor: 3000.0,
+      valor: "R$ 3.000,00",
     },
     {
       id: 2,
@@ -17,7 +17,7 @@ export default function UltimasTransacoes() {
       descricao: "Mercado",
       categoria: "Alimentação",
       tipo: "despesa",
-      valor: -150.0,
+      valor: "- R$ 150,00",
     },
     {
       id: 3,
@@ -25,7 +25,7 @@ export default function UltimasTransacoes() {
       descricao: "Uber",
       categoria: "Transporte",
       tipo: "despesa",
-      valor: -25.0,
+      valor: "- R$ 25,00",
     },
     {
       id: 4,
@@ -33,7 +33,7 @@ export default function UltimasTransacoes() {
       descricao: "Conta de Luz",
       categoria: "Contas",
       tipo: "despesa",
-      valor: -200.0,
+      valor: "- R$ 200,00",
     },
     {
       id: 5,
@@ -41,66 +41,102 @@ export default function UltimasTransacoes() {
       descricao: "Freelance",
       categoria: "Trabalho",
       tipo: "receita",
-      valor: 500.0,
+      valor: "R$ 500,00",
     },
   ];
 
   return (
-    <Card className="shadow-sm border-0 h-100">
-      <CardHeader className="bg-transparent border-0 pt-4 pb-0">
-        <CardTitle className="fs-5 fw-bold">Últimas transações</CardTitle>
-      </CardHeader>
-      <CardContent className="d-flex flex-column h-100 pb-4">
-        <div className="flex-grow-1 mt-3">
-          <div className="table-responsive">
-            <table className="table table-borderless align-middle table-sm">
-              <thead>
-                <tr className="text-muted border-bottom">
-                  <th className="fw-medium pb-2">Data</th>
-                  <th className="fw-medium pb-2">Descrição</th>
-                  <th className="fw-medium pb-2">Categoria</th>
-                  <th className="fw-medium pb-2 text-center">Tipo</th>
-                  <th className="fw-medium pb-2 text-end">Valor</th>
-                </tr>
-              </thead>
-              <tbody>
-                {transacoes.map((t) => (
-                  <tr key={t.id}>
-                    <td className="py-3 text-dark small">{t.data}</td>
-                    <td className="py-3 text-dark small">{t.descricao}</td>
-                    <td className="py-3 text-dark small">{t.categoria}</td>
-                    <td className="py-3 text-center">
-                      {t.tipo === "receita" ? (
-                        <i className="bi bi-arrow-up text-success"></i>
-                      ) : (
-                        <i className="bi bi-arrow-down text-danger"></i>
-                      )}
-                    </td>
-                    <td
-                      className={`py-3 text-end fw-medium small ${t.tipo === "receita" ? "text-success" : "text-danger"}`}
-                    >
-                      {t.tipo === "receita" ? "+" : "-"} R${" "}
-                      {Math.abs(t.valor).toLocaleString("pt-BR", {
-                        minimumFractionDigits: 2,
-                      })}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
+    <div className="d-flex flex-column h-100">
+      {/* Título */}
+      <h5 className="fw-bold mb-4">Últimas transações</h5>
 
-        <div className="text-center mt-auto pt-2">
-          <a
-            href="#"
-            className="text-success text-decoration-none fw-medium small"
-          >
-            Ver todas as transações{" "}
-            <i className="bi bi-chevron-right small"></i>
-          </a>
-        </div>
-      </CardContent>
-    </Card>
+      {/* Container da Tabela (flex-grow-1 empurra o link "Ver todas" lá pro final) */}
+      <div className="table-responsive flex-grow-1">
+        <table
+          className="table align-middle text-nowrap"
+          style={{ fontSize: "14px" }}
+        >
+          {/* Cabeçalho da Tabela */}
+          <thead>
+            <tr>
+              <th
+                className="text-muted border-0 pb-3"
+                style={{ fontWeight: "600" }}
+              >
+                Data
+              </th>
+              <th
+                className="text-muted border-0 pb-3"
+                style={{ fontWeight: "600" }}
+              >
+                Descrição
+              </th>
+              <th
+                className="text-muted border-0 pb-3"
+                style={{ fontWeight: "600" }}
+              >
+                Categoria
+              </th>
+              <th
+                className="text-muted border-0 pb-3"
+                style={{ fontWeight: "600" }}
+              >
+                Tipo
+              </th>
+              <th
+                className="text-muted border-0 pb-3"
+                style={{ fontWeight: "600" }}
+              >
+                Valor
+              </th>
+            </tr>
+          </thead>
+
+          {/* Corpo da Tabela */}
+          <tbody>
+            {transacoes.map((t) => (
+              <tr key={t.id}>
+                {/* As classes py-3 dão um espaçamento confortável (padding) em cima e embaixo do texto */}
+                <td className="py-3 border-bottom border-light">{t.data}</td>
+                <td className="py-3 border-bottom border-light fw-semibold text-dark">
+                  {t.descricao}
+                </td>
+                <td className="py-3 border-bottom border-light">
+                  {t.categoria}
+                </td>
+
+                {/* Coluna do Ícone (Seta) */}
+                <td className="py-3 border-bottom border-light">
+                  {t.tipo === "receita" ? (
+                    <i className="bi bi-arrow-up text-success fs-5"></i>
+                  ) : (
+                    <i className="bi bi-arrow-down text-danger fs-5"></i>
+                  )}
+                </td>
+
+                {/* Coluna do Valor (Muda de cor dinamicamente) */}
+                <td
+                  className={`py-3 border-bottom border-light fw-bold ${t.tipo === "receita" ? "text-success" : "text-danger"}`}
+                >
+                  {t.valor}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Link de Rodapé alinhado à direita (text-end) */}
+      <div className="text-end mt-3">
+        <a
+          href="#"
+          className="text-success text-decoration-none fw-bold"
+          style={{ fontSize: "14px" }}
+        >
+          Ver todas as transações{" "}
+          <i className="bi bi-chevron-right" style={{ fontSize: "12px" }}></i>
+        </a>
+      </div>
+    </div>
   );
 }
