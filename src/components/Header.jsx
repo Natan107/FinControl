@@ -1,4 +1,7 @@
 import React from "react";
+import { obterUsuario } from "../controllers/usuarioController"
+
+const usuario = obterUsuario()
 
 export default function Header() {
   return (
@@ -36,7 +39,7 @@ export default function Header() {
           >
             <i className="bi bi-person fs-5"></i>
           </div>
-          <span className="fw-medium">Olá, Lucas!</span>
+          <span className="fw-medium">Olá, {usuario.nome}!</span>
         </button>
       </div>
     </div>
