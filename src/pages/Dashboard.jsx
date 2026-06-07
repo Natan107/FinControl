@@ -6,16 +6,20 @@ import MetasFinanceiras from "../components/MetasFinanceiras";
 
 export default function Dashboard() {
   return (
-    // Reduzi o padding inferior para pb-2
+    // Container com padding ajustado para não comprimir o conteúdo
     <div
-      className="container-fluid px-4 pb-2"
-      style={{ fontFamily: "Inter, sans-serif" }}
+      className="container-fluid pb-2"
+      style={{
+        fontFamily: "Inter, sans-serif",
+        paddingLeft: "0",
+        paddingRight: "0",
+      }}
     >
       {/* =========================================
           1. CARDS DE RESUMO
           Reduzido: g-3 (espaço lateral) e mb-3 (espaço inferior)
       ============================================= */}
-      <div className="row g-3 mb-3 mx-0">
+      <div className="row g-3 mb-3 mx-0 px-4">
         {/* Card 1: Saldo Atual (Verde) */}
         <div className="col-md-4">
           {/* Reduzi o padding interno do cartão para p-3 */}
@@ -111,7 +115,7 @@ export default function Dashboard() {
 
       {/* Linha 2: Gráficos e Ações Rápidas */}
       {/* Reduzido: g-3 e mb-3 */}
-      <div className="row g-3 mb-3 mx-0">
+      <div className="row g-3 mb-3 mx-0 px-4">
         <div className="col-md-8">
           {/* Reduzi o padding para p-3 */}
           <div className="card border-0 shadow-sm rounded-4 p-3 h-100">
@@ -128,7 +132,7 @@ export default function Dashboard() {
 
       {/* Linha 3: Últimas Transações e Metas Financeiras */}
       {/* Reduzido: g-3 */}
-      <div className="row g-3 mx-0">
+      <div className="row g-3 mx-0 px-4">
         <div className="col-md-8">
           <div className="card border-0 shadow-sm rounded-4 p-3 h-100">
             <UltimasTransacoes />

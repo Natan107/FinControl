@@ -12,7 +12,16 @@ export default function Sidebar() {
   ];
 
   return (
-    <aside className="col-md-2 bg-dark text-white p-0 vh-100 position-fixed">
+    <aside 
+      className="bg-dark text-white p-0 vh-100"
+      style={{
+        position: "fixed",
+        left: 0,
+        top: 0,
+        width: "260px",
+        zIndex: 1000
+      }}
+    >
       <div className="d-flex flex-column h-100">
         <div className="p-3 border-bottom border-secondary">
           <h4 className="mb-0 text-success fw-bold">

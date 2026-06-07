@@ -1,9 +1,22 @@
 /* Custom styles for FinControl Dashboard */
 
+/* Main App Container */
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 /* Sidebar Styling */
 .sidebar {
   width: 260px;
   min-width: 260px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  z-index: 1000;
 }
 
 .bg-dark-blue {
