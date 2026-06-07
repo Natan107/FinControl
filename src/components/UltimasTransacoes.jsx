@@ -2,34 +2,46 @@ import React from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "./CardResumo";
 
 export default function UltimasTransacoes() {
-  // Simulando uma lista de dados que viria do banco de dados no futuro
   const transacoes = [
     {
       id: 1,
-      descricao: "Salário mensal",
-      data: "05 de Junho",
-      valor: 4000.0,
+      data: "05/06/2024",
+      descricao: "Salário",
+      categoria: "Salário",
       tipo: "receita",
-      icone: "bi-cash-stack",
-      cor: "success",
+      valor: 3000.0,
     },
     {
       id: 2,
+      data: "04/06/2024",
       descricao: "Mercado",
-      data: "03 de Junho",
-      valor: -450.0,
+      categoria: "Alimentação",
       tipo: "despesa",
-      icone: "bi-cart",
-      cor: "danger",
+      valor: -150.0,
     },
     {
       id: 3,
-      descricao: "Conta de Luz",
-      data: "01 de Junho",
-      valor: -120.0,
+      data: "03/06/2024",
+      descricao: "Uber",
+      categoria: "Transporte",
       tipo: "despesa",
-      icone: "bi-lightning",
-      cor: "warning",
+      valor: -25.0,
+    },
+    {
+      id: 4,
+      data: "02/06/2024",
+      descricao: "Conta de Luz",
+      categoria: "Contas",
+      tipo: "despesa",
+      valor: -200.0,
+    },
+    {
+      id: 5,
+      data: "01/06/2024",
+      descricao: "Freelance",
+      categoria: "Trabalho",
+      tipo: "receita",
+      valor: 500.0,
     },
   ];
 
@@ -38,47 +50,54 @@ export default function UltimasTransacoes() {
       <CardHeader className="bg-transparent border-0 pt-4 pb-0">
         <CardTitle className="fs-5 fw-bold">Últimas transações</CardTitle>
       </CardHeader>
-      <CardContent className="d-flex flex-column justify-content-between h-100 pb-4">
-        {/* Lista de transações (Substituindo o texto vazio) */}
-        <div className="mt-4 mb-4 flex-grow-1">
-          <ul className="list-unstyled d-flex flex-column gap-3 mb-0">
-            {transacoes.map((t) => (
-              <li
-                key={t.id}
-                className="d-flex justify-content-between align-items-center border-bottom pb-3"
-              >
-                {/* Ícone e Descrição */}
-                <div className="d-flex align-items-center gap-3">
-                  <div
-                    className={`bg-${t.cor} bg-opacity-10 text-${t.cor} rounded p-2 d-flex align-items-center justify-content-center`}
-                    style={{ width: "45px", height: "45px" }}
-                  >
-                    <i className={`bi ${t.icone} fs-5`}></i>
-                  </div>
-                  <div>
-                    <h6 className="mb-0 fw-bold">{t.descricao}</h6>
-                    <small className="text-muted">{t.data}</small>
-                  </div>
-                </div>
-
-                {/* Valor Formatado */}
-                <span
-                  className={`fw-bold text-${t.tipo === "receita" ? "success" : "dark"}`}
-                >
-                  {t.tipo === "receita" ? "+" : "-"} R${" "}
-                  {Math.abs(t.valor).toLocaleString("pt-BR", {
-                    minimumFractionDigits: 2,
-                  })}
-                </span>
-              </li>
-            ))}
-          </ul>
+      <CardContent className="d-flex flex-column h-100 pb-4">
+        <div className="flex-grow-1 mt-3">
+          <div className="table-responsive">
+            <table className="table table-borderless align-middle table-sm">
+              <thead>
+                <tr className="text-muted border-bottom">
+                  <th className="fw-medium pb-2">Data</th>
+                  <th className="fw-medium pb-2">Descrição</th>
+                  <th className="fw-medium pb-2">Categoria</th>
+                  <th className="fw-medium pb-2 text-center">Tipo</th>
+                  <th className="fw-medium pb-2 text-end">Valor</th>
+                </tr>
+              </thead>
+              <tbody>
+                {transacoes.map((t) => (
+                  <tr key={t.id}>
+                    <td className="py-3 text-dark small">{t.data}</td>
+                    <td className="py-3 text-dark small">{t.descricao}</td>
+                    <td className="py-3 text-dark small">{t.categoria}</td>
+                    <td className="py-3 text-center">
+                      {t.tipo === "receita" ? (
+                        <i className="bi bi-arrow-up text-success"></i>
+                      ) : (
+                        <i className="bi bi-arrow-down text-danger"></i>
+                      )}
+                    </td>
+                    <td
+                      className={`py-3 text-end fw-medium small ${t.tipo === "receita" ? "text-success" : "text-danger"}`}
+                    >
+                      {t.tipo === "receita" ? "+" : "-"} R${" "}
+                      {Math.abs(t.valor).toLocaleString("pt-BR", {
+                        minimumFractionDigits: 2,
+                      })}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
 
-        {/* Rodapé com link */}
-        <div className="text-center mt-auto">
-          <a href="#" className="text-success text-decoration-none fw-medium">
-            Ver todas as transações <i className="bi bi-arrow-right"></i>
+        <div className="text-center mt-auto pt-2">
+          <a
+            href="#"
+            className="text-success text-decoration-none fw-medium small"
+          >
+            Ver todas as transações{" "}
+            <i className="bi bi-chevron-right small"></i>
           </a>
         </div>
       </CardContent>
