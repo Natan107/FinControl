@@ -47,16 +47,13 @@ export default function UltimasTransacoes() {
 
   return (
     <div className="d-flex flex-column h-100">
-      {/* Título */}
       <h5 className="fw-bold mb-4">Últimas transações</h5>
 
-      {/* Container da Tabela (flex-grow-1 empurra o link "Ver todas" lá pro final) */}
       <div className="table-responsive flex-grow-1">
         <table
           className="table align-middle text-nowrap"
           style={{ fontSize: "14px" }}
         >
-          {/* Cabeçalho da Tabela */}
           <thead>
             <tr>
               <th
@@ -92,7 +89,6 @@ export default function UltimasTransacoes() {
             </tr>
           </thead>
 
-          {/* Corpo da Tabela */}
           <tbody>
             {transacoes.map((t) => (
               <tr key={t.id}>
@@ -105,7 +101,6 @@ export default function UltimasTransacoes() {
                   {t.categoria}
                 </td>
 
-                {/* Coluna do Ícone (Seta) */}
                 <td className="py-3 border-bottom border-light">
                   {t.tipo === "receita" ? (
                     <i className="bi bi-arrow-up text-success fs-5"></i>
@@ -114,7 +109,6 @@ export default function UltimasTransacoes() {
                   )}
                 </td>
 
-                {/* Coluna do Valor (Muda de cor dinamicamente) */}
                 <td
                   className={`py-3 border-bottom border-light fw-bold ${t.tipo === "receita" ? "text-success" : "text-danger"}`}
                 >
@@ -126,7 +120,6 @@ export default function UltimasTransacoes() {
         </table>
       </div>
 
-      {/* Link de Rodapé alinhado à direita (text-end) */}
       <div className="text-end mt-3">
         <a
           href="#"

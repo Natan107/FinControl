@@ -8,7 +8,6 @@ body,
   overflow: hidden;
 }
 
-/* Sidebar Styling */
 .sidebar {
   width: 260px;
   min-width: 260px;
@@ -28,13 +27,11 @@ body,
   height: 32px;
 }
 
-/* Avatar Styling */
 .avatar {
   width: 40px;
   height: 40px;
 }
 
-/* Icon Box Styling */
 .icon-box {
   width: 48px;
   height: 48px;
@@ -43,7 +40,6 @@ body,
   justify-content: center;
 }
 
-/* Custom Purple Color (Bootstrap doesn't have purple by default) */
 .bg-purple {
   background-color: #a855f7;
 }
@@ -52,12 +48,10 @@ body,
   color: #a855f7;
 }
 
-/* Hover Effects */
 .btn-link:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Custom Gap Utilities (Bootstrap 5 already has gap, but ensuring consistency) */
 .gap-2 {
   gap: 0.5rem;
 }
@@ -70,7 +64,6 @@ body,
   gap: 1.5rem;
 }
 
-/* Smooth Transitions */
 .btn,
 .card {
   transition: all 0.2s ease-in-out;
@@ -80,13 +73,11 @@ body,
   transform: translateY(-2px);
 }
 
-/* Notification Badge */
 .badge-notification {
   width: 8px;
   height: 8px;
 }
 
-/* Custom Border Color */
 .border-secondary {
   border-color: rgba(255, 255, 255, 0.1) !important;
 }
@@ -110,7 +101,6 @@ body,
   opacity: 1;
 }
 
-/* Responsive Font Sizes */
 .sidebar-menu-button {
   transition:
     background-color 0.15s ease,

@@ -1,20 +1,17 @@
 import React from "react";
-import { obterUsuario } from "../controllers/usuarioController"
+import { obterUsuario } from "../controllers/usuarioController";
 
-const usuario = obterUsuario()
+const usuario = obterUsuario();
 
 export default function Header() {
   return (
     <div className="d-flex justify-content-between align-items-center pt-2 pb-4 mb-4 border-bottom">
-      {/* Lado Esquerdo: Títulos */}
       <div>
         <h2 className="m-0 fw-bold">Dashboard</h2>
         <span className="text-muted">Resumo da sua vida financeira</span>
       </div>
 
-      {/* Lado Direito: Notificação e Perfil */}
       <div className="d-flex align-items-center gap-4">
-        {/* Ícone de Sino (Bootstrap Icons) */}
         <button
           type="button"
           className="header-action-button position-relative header-action-lift"
@@ -26,7 +23,6 @@ export default function Header() {
           <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>
         </button>
 
-        {/* Perfil Simplificado (Sem precisar do componente Avatar.jsx ainda) */}
         <button
           type="button"
           className="header-action-button d-flex align-items-center gap-2 header-action-lift"
