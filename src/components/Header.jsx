@@ -7,7 +7,7 @@ export default function Header() {
   return (
     <div className="d-flex justify-content-between align-items-center pt-2 pb-4 mb-4 border-bottom">
       <div>
-        <h2 className="m-0 fw-bold">Dashboard</h2>
+        <h2 className="m-0 fw-bold">FinControl</h2>
         <span className="text-muted">Resumo da sua vida financeira</span>
       </div>
 
