@@ -15,14 +15,8 @@ export default function Dashboard() {
         paddingRight: "0",
       }}
     >
-      {/* =========================================
-          1. CARDS DE RESUMO
-          Reduzido: g-3 (espaço lateral) e mb-3 (espaço inferior)
-      ============================================= */}
       <div className="row g-3 mb-3 mx-0 px-4">
-        {/* Card 1: Saldo Atual (Verde) */}
         <div className="col-md-4">
-          {/* Reduzi o padding interno do cartão para p-3 */}
           <div
             className="card border-0 shadow-sm rounded-4 p-3 h-100"
             style={{ backgroundColor: "#e8f5e9" }}
@@ -50,7 +44,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Card 2: Receitas do mês (Azul) */}
         <div className="col-md-4">
           <div
             className="card border-0 shadow-sm rounded-4 p-3 h-100"
@@ -79,7 +72,6 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Card 3: Despesas do mês (Vermelho) */}
         <div className="col-md-4">
           <div
             className="card border-0 shadow-sm rounded-4 p-3 h-100"
@@ -109,15 +101,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* =========================================
-          2. ÁREA DE COMPONENTES COM SOMBRA
-      ============================================= */}
-
-      {/* Linha 2: Gráficos e Ações Rápidas */}
-      {/* Reduzido: g-3 e mb-3 */}
       <div className="row g-3 mb-3 mx-0 px-4">
         <div className="col-md-8">
-          {/* Reduzi o padding para p-3 */}
           <div className="card border-0 shadow-sm rounded-4 p-3 h-100">
             <GraficoDespesas />
           </div>
@@ -130,8 +115,6 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* Linha 3: Últimas Transações e Metas Financeiras */}
-      {/* Reduzido: g-3 */}
       <div className="row g-3 mx-0 px-4">
         <div className="col-md-8">
           <div className="card border-0 shadow-sm rounded-4 p-3 h-100">
