@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import InputMoeda from "./InputMoeda";
+import { criarReceita } from "../controllers/receitaController";
 
 export default function ModalReceita({
   show,
@@ -9,29 +10,17 @@ export default function ModalReceita({
   const [descricao, setDescricao] = useState("");
   const [valorD, setValorD] = useState("");
   const [data, setData] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const salvarReceita = async () => {
-    const novaReceita = {
-      descricao,
-      valor: valorD,
-      data,
-    };
-
     try {
-      const response = await fetch(
-        "http://localhost:3001/receitas",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(novaReceita),
-        }
-      );
+      setLoading(true);
 
-      if (!response.ok) {
-        throw new Error("Erro ao salvar receita");
-      }
+      await criarReceita({
+        descricao,
+        valor: valorD,
+        data,
+      });
 
       setDescricao("");
       setValorD("");
@@ -40,6 +29,9 @@ export default function ModalReceita({
       handleClose();
     } catch (error) {
       console.error(error);
+      alert("Erro ao salvar receita.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -129,8 +121,9 @@ export default function ModalReceita({
               <button
                 className="btn btn-success"
                 onClick={salvarReceita}
+                disabled={loading}
               >
-                Salvar
+                {loading ? "Salvando..." : "Salvar"}
               </button>
             </div>
 

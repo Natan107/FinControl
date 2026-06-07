@@ -5,7 +5,21 @@
       "valor": "R$ 20,00",
       "data": "2005-12-29",
       "id": "gkJpCDIzO7o"
+    },
+    {
+      "descricao": "teste",
+      "valor": "R$ 20,00",
+      "data": "2005-12-29",
+      "id": "-9SyVFvUFO4"
     }
   ],
-  "despesas": []
+  "despesas": [
+    {
+      "descricao": "teste",
+      "valor": "R$ 40,00",
+      "data": "2020-04-20",
+      "id": "LuuXIyEeKFY"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

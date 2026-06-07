@@ -1,62 +1,37 @@
-import fs from "fs/promises";
-import path from "path";
-import { fileURLToPath } from "url";
-import { randomUUID } from "crypto";
+const API_URL = "http://localhost:3001/receitas";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+export async function listarReceitas() {
+  const response = await fetch(API_URL);
 
-const dbPath = path.resolve(__dirname, "../data/db.json");
-
-async function lerDB() {
-  const conteudo = await fs.readFile(dbPath, "utf-8");
-  return JSON.parse(conteudo);
-}
-
-async function salvarDB(dados) {
-  await fs.writeFile(dbPath, JSON.stringify(dados, null, 2), "utf-8");
-}
-
-export async function listarReceitas(req, res) {
-  try {
-    const db = await lerDB();
-    return res.status(200).json(db.receitas);
-  } catch (error) {
-    return res.status(500).json({
-      message: "Erro ao listar receitas",
-      error: error.message,
-    });
+  if (!response.ok) {
+    throw new Error("Erro ao buscar receitas");
   }
+
+  return response.json();
 }
 
-export async function criarReceita(req, res) {
-  try {
-    const { descricao, valor, data } = req.body;
+export async function criarReceita(receita) {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(receita),
+  });
 
-    if (!descricao || !valor || !data) {
-      return res.status(400).json({
-        message: "Descrição, valor e data são obrigatórios.",
-      });
-    }
+  if (!response.ok) {
+    throw new Error("Erro ao criar receita");
+  }
 
-    const db = await lerDB();
+  return response.json();
+}
 
-    const novaReceita = {
-      id: randomUUID(),
-      descricao,
-      valor,
-      data,
-    };
+export async function deletarReceita(id) {
+  const response = await fetch(`${API_URL}/${id}`, {
+    method: "DELETE",
+  });
 
-    db.receitas.push(novaReceita);
-
-    await salvarDB(db);
-
-    return res.status(201).json(novaReceita);
-  } catch (error) {
-    return res.status(500).json({
-      message: "Erro ao criar receita",
-      error: error.message,
-    });
+  if (!response.ok) {
+    throw new Error("Erro ao deletar receita");
   }
 }

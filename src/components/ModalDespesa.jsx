@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import InputMoeda from "./InputMoeda";
+import { criarDespesa } from "../controllers/despesaController";
 
 export default function ModalDespesa({
   show,
@@ -9,29 +10,17 @@ export default function ModalDespesa({
   const [descricao, setDescricao] = useState("");
   const [valorD, setValorD] = useState("");
   const [data, setData] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const salvarDespesa = async () => {
-    const novaDespesa = {
-      descricao,
-      valor: valorD,
-      data,
-    };
-
     try {
-      const response = await fetch(
-        "http://localhost:3001/despesas",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(novaDespesa),
-        }
-      );
+      setLoading(true);
 
-      if (!response.ok) {
-        throw new Error("Erro ao salvar despesa");
-      }
+      await criarDespesa({
+        descricao,
+        valor: valorD,
+        data,
+      });
 
       setDescricao("");
       setValorD("");
@@ -40,6 +29,9 @@ export default function ModalDespesa({
       handleClose();
     } catch (error) {
       console.error(error);
+      alert("Erro ao salvar despesa.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -129,8 +121,9 @@ export default function ModalDespesa({
               <button
                 className="btn btn-danger"
                 onClick={salvarDespesa}
+                disabled={loading}
               >
-                Salvar
+                {loading ? "Salvando..." : "Salvar"}
               </button>
             </div>
 
