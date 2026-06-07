@@ -4,6 +4,8 @@ import "./App.css";
 import Sidebar from "./components/Sidebar";
 import Header from "./components/Header";
 import Dashboard from "./pages/Dashboard";
+import { Despesas } from "./pages/Despesas";
+import Metas from "./pages/Metas";
 
 export default function App() {
   return (
@@ -27,7 +29,7 @@ export default function App() {
 
         {/* 5. Dashboard: Ocupa o restante do espaço (flex-grow-1) e rola apenas internamente se necessário (overflow-auto) */}
         <div className="ps-1 pe-4 pb-3 flex-grow-1 overflow-auto">
-          <Dashboard />
+        <Metas />
         </div>
       </main>
     </div>
