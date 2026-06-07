@@ -7,6 +7,5 @@
       "id": "gkJpCDIzO7o"
     }
   ],
-  "despesas": [],
-  "$schema": "./node_modules/json-server/schema.json"
+  "despesas": []
 }

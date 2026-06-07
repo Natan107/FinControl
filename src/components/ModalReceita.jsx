@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import InputMoeda from "./InputMoeda";
 
 export default function ModalReceita({
@@ -16,8 +17,6 @@ export default function ModalReceita({
       data,
     };
 
-    console.log(novaReceita);
-
     try {
       const response = await fetch(
         "http://localhost:3001/receitas",
@@ -34,14 +33,11 @@ export default function ModalReceita({
         throw new Error("Erro ao salvar receita");
       }
 
-      // Limpa o formulário
       setDescricao("");
       setValorD("");
       setData("");
 
-      // Fecha o modal
       handleClose();
-
     } catch (error) {
       console.error(error);
     }
@@ -49,15 +45,27 @@ export default function ModalReceita({
 
   if (!show) return null;
 
-  return (
+  return createPortal(
     <>
       <div
         className="modal-backdrop fade show"
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 1050,
+        }}
         onClick={handleClose}
-      ></div>
+      />
 
-      <div className="modal d-block">
-        <div className="modal-dialog">
+      <div
+        className="modal d-block"
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 1055,
+        }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
 
             <div className="modal-header">
@@ -129,6 +137,7 @@ export default function ModalReceita({
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }

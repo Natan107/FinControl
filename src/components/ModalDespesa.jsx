@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import InputMoeda from "./InputMoeda";
 
 export default function ModalDespesa({
@@ -16,8 +17,6 @@ export default function ModalDespesa({
       data,
     };
 
-    console.log(novaDespesa);
-
     try {
       const response = await fetch(
         "http://localhost:3001/despesas",
@@ -34,14 +33,11 @@ export default function ModalDespesa({
         throw new Error("Erro ao salvar despesa");
       }
 
-      // Limpa o formulário
       setDescricao("");
       setValorD("");
       setData("");
 
-      // Fecha o modal
       handleClose();
-
     } catch (error) {
       console.error(error);
     }
@@ -49,20 +45,29 @@ export default function ModalDespesa({
 
   if (!show) return null;
 
-  return (
+  return createPortal(
     <>
-      {/* Backdrop */}
       <div
         className="modal-backdrop fade show"
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 1050,
+        }}
         onClick={handleClose}
-      ></div>
+      />
 
-      {/* Modal */}
-      <div className="modal d-block">
-        <div className="modal-dialog">
+      <div
+        className="modal d-block"
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 1055,
+        }}
+      >
+        <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
 
-            {/* Cabeçalho */}
             <div className="modal-header">
               <div className="d-flex align-items-center gap-3">
                 <div className="bg-danger bg-opacity-10 text-danger p-2 rounded">
@@ -86,7 +91,6 @@ export default function ModalDespesa({
               />
             </div>
 
-            {/* Corpo */}
             <div className="modal-body">
               <input
                 type="text"
@@ -114,7 +118,6 @@ export default function ModalDespesa({
               />
             </div>
 
-            {/* Rodapé */}
             <div className="modal-footer">
               <button
                 className="btn btn-secondary"
@@ -134,6 +137,7 @@ export default function ModalDespesa({
           </div>
         </div>
       </div>
-    </>
+    </>,
+    document.body
   );
 }
