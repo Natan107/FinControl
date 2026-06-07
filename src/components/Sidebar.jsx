@@ -1,14 +1,15 @@
 import React from "react";
 import Gerencie from "../assets/Gerencie.png";
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
   // Troquei os componentes do Lucide pelos nomes das classes do Bootstrap Icons
   const menu = [
-    { label: "Dashboard", icon: "bi-grid", active: true },
-    { label: "Receitas", icon: "bi-graph-up-arrow" },
-    { label: "Despesas", icon: "bi-graph-down-arrow" },
-    { label: "Metas Financeiras", icon: "bi-bullseye" },
-    { label: "Relatórios", icon: "bi-file-earmark-text" },
+    { label: "Dashboard", icon: "bi-grid", path: "/" },
+    { label: "Receitas", icon: "bi-graph-up-arrow", path: "/receitas" },
+    { label: "Despesas", icon: "bi-graph-down-arrow", path: "/despesas" },
+    { label: "Metas Financeiras", icon: "bi-bullseye", path: "/metas" },
+    { label: "Relatórios", icon: "bi-file-earmark-text", path: "/relatorios" },
   ];
 
   return (
@@ -36,15 +37,18 @@ export default function Sidebar() {
             {menu.map((item) => {
               return (
                 <li key={item.label} className="nav-item">
-                  <button
-                    type="button"
-                    className={`sidebar-menu-button d-flex align-items-center gap-3 w-100 btn border-0 ${item.active ? "bg-success text-white" : "text-white-50 text-start"}`}
-                    style={!item.active ? { textAlign: "left" } : {}}
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) =>
+                      `sidebar-menu-button d-flex align-items-center gap-3 w-100 btn border-0 ${isActive
+                        ? "bg-success text-white"
+                        : "text-white-50 text-start"
+                      }`
+                    }
                   >
-                    {/* Ícone do Bootstrap sendo renderizado dinamicamente */}
                     <i className={`bi ${item.icon} fs-5`}></i>
                     <span className="small fw-medium">{item.label}</span>
-                  </button>
+                  </NavLink>
                 </li>
               );
             })}

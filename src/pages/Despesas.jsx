@@ -11,7 +11,7 @@ import {
     Trash2,
     } from "lucide-react";
 
-    export function Despesas() {
+    export default function Despesas() {
     const [search, setSearch] = useState("");
 
     const [expenses, setExpenses] = useState([
