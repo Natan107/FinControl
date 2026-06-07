@@ -1,0 +1,15 @@
+services:
+  aplicacao:
+
+    build: .
+
+    container_name: FinControl
+
+    ports:
+      - "5173:5173"
+
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+    working_dir: /app
