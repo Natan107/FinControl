@@ -38,7 +38,7 @@ export default function Sidebar() {
                 <li key={item.label} className="nav-item">
                   <button
                     type="button"
-                    className={`d-flex align-items-center gap-3 w-100 btn border-0 ${item.active ? "bg-success text-white" : "text-white-50 text-start"}`}
+                    className={`sidebar-menu-button d-flex align-items-center gap-3 w-100 btn border-0 ${item.active ? "bg-success text-white" : "text-white-50 text-start"}`}
                     style={!item.active ? { textAlign: "left" } : {}}
                   >
                     {/* Ícone do Bootstrap sendo renderizado dinamicamente */}
