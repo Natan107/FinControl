@@ -77,7 +77,7 @@ export default function GraficoDespesas() {
       <div className="row flex-grow-1 align-items-center">
         {/* LADO ESQUERDO: Gráfico Real do Recharts */}
         <div className="col-5" style={{ height: "220px" }}>
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height={220}>
             <PieChart>
               <Pie
                 data={categorias}
