@@ -1,21 +1,65 @@
 import { useState } from "react";
 import InputMoeda from "./InputMoeda";
 
-export default function ModalReceita({ show, handleClose }) {
-  const [valor, setValor] = useState("");
+export default function ModalReceita({
+  show,
+  handleClose,
+}) {
+  const [descricao, setDescricao] = useState("");
+  const [valorD, setValorD] = useState("");
+  const [data, setData] = useState("");
+
+  const salvarReceita = async () => {
+    const novaReceita = {
+      descricao,
+      valor: valorD,
+      data,
+    };
+
+    console.log(novaReceita);
+
+    try {
+      const response = await fetch(
+        "http://localhost:3001/receitas",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(novaReceita),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Erro ao salvar receita");
+      }
+
+      // Limpa o formulário
+      setDescricao("");
+      setValorD("");
+      setData("");
+
+      // Fecha o modal
+      handleClose();
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (!show) return null;
 
   return (
     <>
-      {/* Backdrop */}
-      <div className="modal-backdrop fade show" onClick={handleClose}></div>
+      <div
+        className="modal-backdrop fade show"
+        onClick={handleClose}
+      ></div>
 
-      {/* Modal */}
       <div className="modal d-block">
         <div className="modal-dialog">
           <div className="modal-content">
-            {/* Cabeçalho */}
+
             <div className="modal-header">
               <div className="d-flex align-items-center gap-3">
                 <div className="bg-success bg-opacity-10 text-success p-2 rounded">
@@ -23,7 +67,9 @@ export default function ModalReceita({ show, handleClose }) {
                 </div>
 
                 <div>
-                  <h5 className="modal-title mb-0">Nova Receita</h5>
+                  <h5 className="modal-title mb-0">
+                    Nova Receita
+                  </h5>
 
                   <small className="text-muted">
                     Registrar uma nova entrada
@@ -31,30 +77,55 @@ export default function ModalReceita({ show, handleClose }) {
                 </div>
               </div>
 
-              <button className="btn-close" onClick={handleClose} />
+              <button
+                className="btn-close"
+                onClick={handleClose}
+              />
             </div>
 
-            {/* Corpo */}
             <div className="modal-body">
               <input
                 type="text"
                 className="form-control mb-3"
                 placeholder="Descrição"
+                value={descricao}
+                onChange={(e) =>
+                  setDescricao(e.target.value)
+                }
               />
 
-              <InputMoeda value={valor} onChange={setValor} className="mb-3" />
+              <InputMoeda
+                value={valorD}
+                onChange={setValorD}
+                className="mb-3"
+              />
 
-              <input type="date" className="form-control" />
+              <input
+                type="date"
+                className="form-control"
+                value={data}
+                onChange={(e) =>
+                  setData(e.target.value)
+                }
+              />
             </div>
 
-            {/* Rodapé */}
             <div className="modal-footer">
-              <button className="btn btn-secondary" onClick={handleClose}>
+              <button
+                className="btn btn-secondary"
+                onClick={handleClose}
+              >
                 Cancelar
               </button>
 
-              <button className="btn btn-success">Salvar</button>
+              <button
+                className="btn btn-success"
+                onClick={salvarReceita}
+              >
+                Salvar
+              </button>
             </div>
+
           </div>
         </div>
       </div>

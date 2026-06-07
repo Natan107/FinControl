@@ -1,0 +1,12 @@
+{
+  "receitas": [
+    {
+      "descricao": "money",
+      "valor": "R$ 20,00",
+      "data": "2005-12-29",
+      "id": "gkJpCDIzO7o"
+    }
+  ],
+  "despesas": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
