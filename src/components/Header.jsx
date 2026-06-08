@@ -1,4 +1,3 @@
-import React from "react";
 import { obterUsuario } from "../controllers/usuarioController";
 
 const usuario = obterUsuario();

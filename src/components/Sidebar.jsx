@@ -1,4 +1,3 @@
-import React from "react";
 import Gerencie from "../assets/Gerencie.png";
 import { NavLink } from "react-router-dom";
 
@@ -40,9 +39,10 @@ export default function Sidebar() {
                   <NavLink
                     to={item.path}
                     className={({ isActive }) =>
-                      `sidebar-menu-button d-flex align-items-center gap-3 w-100 btn border-0 ${isActive
-                        ? "bg-success text-white"
-                        : "text-white-50 text-start"
+                      `sidebar-menu-button d-flex align-items-center gap-3 w-100 btn border-0 ${
+                        isActive
+                          ? "bg-success text-white"
+                          : "text-white-50 text-start"
                       }`
                     }
                   >

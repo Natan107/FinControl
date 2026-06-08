@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function UltimasTransacoes() {
   // Array com os dados exatos do seu print para gerar a tabela automaticamente
   const transacoes = [

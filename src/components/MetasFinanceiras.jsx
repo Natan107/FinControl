@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function MetasFinanceiras() {
   return (
     // d-flex flex-column h-100 garante que o link "Ver todas" vá parar lá no final da caixa branca

@@ -1,4 +1,3 @@
-import React from "react";
 import "../App.css";
 import GraficoDespesas from "../components/GraficoDespesas";
 import AcoesRapidas from "../components/AcoesRapidas";
